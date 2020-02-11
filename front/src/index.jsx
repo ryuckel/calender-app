@@ -1,6 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CalendarBoard from './components/CalendarBoard';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ja';
 
-const App = () => <di>hello react!!</di>;
+dayjs.locale('ja');
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const App = () => (
+	<div>
+		<CalendarBoard />
+	</div>
+);
+
+ReactDOM.render(<App />, document.getElementById('root'));
