@@ -2,13 +2,14 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import * as styles from './style.css';
-import { isSameMonth, isFirstDay, isSameDay } from '../../services/calendar';
+import { isSameMonth, isFirstDay, isSameDay, getMonth } from '../../services/calendar';
 
-const CalendarElement = ({ day }) => {
+const CalendarElement = ({ day, month }) => {
 	const today = dayjs();
 
 	// 今月以外をグレーダウン
-	const isCurrentMonth = isSameMonth(day, today);
+	const currentMonth = getMonth(month);
+	const isCurrentMonth = isSameMonth(day, currentMonth);
 	const textColor = isCurrentMonth ? 'textPrimary' : 'textSecondary';
 
 	// 文字列のフォーマットをどうするか
