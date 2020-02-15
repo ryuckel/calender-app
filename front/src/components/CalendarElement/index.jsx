@@ -3,8 +3,9 @@ import { Typography } from '@material-ui/core';
 import dayjs from 'dayjs';
 import * as styles from './style.css';
 import { isSameMonth, isFirstDay, isSameDay, getMonth } from '../../services/calendar';
+import Schedule from '../Schedule';
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules, ...props }) => {
 	const today = dayjs();
 
 	// 今月以外をグレーダウン
@@ -24,6 +25,11 @@ const CalendarElement = ({ day, month }) => {
 			<Typography className={styles.date} align="center" color={textColor} variant="caption" component="div">
 				<span className={isToday ? styles.today : ''}>{day.format(format)}</span>
 			</Typography>
+			<div className={styles.schedules}>
+				{schedules.map(e => (
+					<Schedule key={e.id} schedule={e} {...props} />
+				))}
+			</div>
 		</div>
 	);
 };
