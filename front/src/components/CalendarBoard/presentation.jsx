@@ -1,11 +1,21 @@
-import React from 'react';
 import { GridList, Typography } from '@material-ui/core';
 import CalendarElement from '../CalendarElement';
-
+import React, { useEffect } from 'react';
 import * as styles from './style.css';
 const days = ['日', '月', '火', '水', '木', '金', '土'];
 
-const CalendarBoard = ({ calendar, month, openAddScheduleDialog, schedules, openCurrentScheduleDialog }) => {
+const CalendarBoard = ({
+	calendar,
+	month,
+	openAddScheduleDialog,
+	schedules,
+	fetchSchedule,
+	openCurrentScheduleDialog
+}) => {
+	useEffect(() => {
+		// 初回のみdataを取得する
+		fetchSchedule();
+	}, []);
 	console.log(calendar);
 	return (
 		<div className={styles.container}>
